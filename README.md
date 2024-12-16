@@ -53,3 +53,85 @@ Configurar backups automáticos no Firestore e escalabilidade automática com o 
 ### 7.6. Escalabilidade
 Cloud Run ajusta instâncias automaticamente conforme a demanda.
 Projetar para tolerância a falhas com redundância geográfica.
+## 8. Cenários de Alto Rendimento
+### 8.1 Simulação de tráfego pesado
+#### 8.1.1 Ferramenta para teste de carga:
+Use ferramentas como Apache JMeter, Locust, ou K6 para simular 1.000 solicitações por segundo.
+Configure múltiplos usuários simultâneos e distribua as requisições para endpoints relevantes da API Flask.
+Meça latência, throughput, e taxas de erro.
+#### 8.1.2 Resultados esperados:
+Documente como a API se comporta sob tráfego pesado: latência média, porcentagem de erros (como 429 Too Many Requests), e consumo de recursos (CPU/RAM).
+### 8.2. Plano de escalabilidade e balanceamento de carga
+#### 8.2.1 Balanceamento de carga:
+Use um balanceador de carga como NGINX ou AWS Application Load Balancer para distribuir requisições entre instâncias da API.
+Configure o balanceamento com políticas como round-robin ou least-connections.
+#### 8.2.2 Armazenamento em cache:
+Integre caching usando Redis ou Memcached:
+- Cacheie respostas para imagens idênticas.
+- Reduza requisições duplicadas.
+#### 8.2.3 Dimensionamento horizontal:
+Implante a API em contêineres usando Docker.
+Orquestre com Kubernetes ou AWS ECS para escalar horizontalmente com base em métricas (por exemplo, aumentar o número de réplicas quando o uso da CPU ultrapassar 70%).
+#### 8.2.4 Dimensionamento vertical:
+Configure escalabilidade vertical para servidores em que a API esteja hospedada (aumentar recursos de CPU/RAM).
+Exemplos: aumente o tamanho da máquina EC2 na AWS ou redimensione a instância no Google Cloud.
+## 9. Design do Banco de Dados
+### 9.1 Requisitos:
+#### 9.1.1 Logs de solicitações, incluindo:
+- Metadados da imagem (nome do arquivo, tamanho, formato).
+- Resultados da classificação (aberta/fechada).
+- Registros de data e hora.
+- Informações do cliente (IP, chave de API, user-agent).
+#### 9.1.2 Proposta de design:
+- SQL:
+  - Banco relacional como PostgreSQL:
+    - Tabela: request_logs
+      - id (chave primária, UUID).
+      - timestamp (data e hora).
+      - metadata (JSON ou colunas separadas para cada metadado).
+      - classification_result (string: "aberta" ou "fechada").
+      - client_info (JSON ou colunas separadas como IP, user-agent).
+    - Escalabilidade:
+      - Use particionamento de tabelas baseado em tempo (ex.: particione por dia/mês).
+      - Habilite réplicas de leitura para otimizar consultas de análise.
+- NoSQL:
+  - Banco não relacional como MongoDB:
+      - Coleção: request_logs
+  - Escalabilidade:
+      - Configurar um cluster sharded para distribuir dados entre múltiplos servidores.
+      - Habilitar backups automáticos e failover.
+
+  ## 10. Monitoramento e Métricas
+### 10.1 KPIs
+- Tempo de resposta: Tempo médio de resposta em milissegundos.
+- Taxa de erro: Percentual de requisições com falha (4xx e 5xx).
+- Uso de recursos: CPU, memória, e latência por instância.
+- Throughput: Número de requisições processadas por segundo.
+### 10.2 Ferramentas de monitoramento:
+#### 10.2.1 Grafana:
+- Configure painéis para monitorar tempo de resposta e taxa de erro.
+- Use Prometheus como back-end para coletar métricas.
+#### 10.2.2 Log Management:
+- Integre com Elastic Stack (ELK) para armazenar e visualizar logs.
+- Analise erros e padrões de tráfego em tempo real.
+#### 10.2 . Acompanhamento de logs de aplicações:
+- Use ferramentas como New Relic ou DataDog para monitoramento detalhado de transações.
+## 11. Segurança
+### 11.1 Autenticação e validação:
+#### 11.1.1 Chaves de API:
+Exigir chaves de API únicas para cada cliente.
+Revogar chaves comprometidas ou inativas.
+#### 11.1.2 OAuth 2.0:
+Implemente um fluxo de autenticação para clientes que exigem múltiplos acessos.
+### 11.2 Validação de entrada:
+#### 11.2.1 Validação de imagem:
+Verifique o formato, tamanho, e tipo de imagem (ex.: apenas JPEG/PNG).
+Use bibliotecas como Pillow para validação.
+### 11.3 Outras medidas:
+#### 11.3.1 Limitação de taxa:
+Use bibliotecas como Flask-Limiter para restringir solicitações por cliente (ex.: 100 req/minuto).
+#### 11.3.2 Higienização de entrada:
+Proteja contra ataques injection (ex.: SQL Injection) validando inputs.
+#### 11.3.3 HTTPS:
+Habilite HTTPS com certificados TLS via Let's Encrypt.
+
