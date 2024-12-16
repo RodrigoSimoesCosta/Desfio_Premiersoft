@@ -5,6 +5,8 @@ Desenvolver e implementar uma API Flask capaz de identificar se uma garrafa de c
 # Descrição do desafio:
 Uma de nossas marcas de cerveja visa automatizar a detecção do status da garrafa (aberta ou fechada) por meio de uma API escalável e eficiente. Sua tarefa é construir uma prova de conceito (PoC) que classifique o status da garrafa, forneça uma pontuação de confiança para o resultado, exponha essa funcionalidade por meio de uma API baseada em Flask e aborde considerações de infraestrutura para implantação e escalabilidade.
 # Solução
+Link do Git: https://github.com/RodrigoSimoesCosta/Desfio_Premiersoft/tree/main
+
 Desenvolvedor: Rodrigo Simões Costa
 
 Data: 16/12/2024
