@@ -14,12 +14,14 @@ Nome do arquivo: desafio_premier_soft.py
 Linguagem: Criamos um modelo em python que segue as seguintes etapas:
 ### 1.1 Instalação de Pacotes e Importação das Bibliotecas:
 Instalamos os pacotes e as bilbiotecas necessárias
+
 ### 1.2 Dados:
 Pegamos o conjunto de dados proposto que tinha 8589 imagens e selecionamos de maneira aleatória 500 imagens de garrafas abertas e 500 imagens de garrafas fechadas e criamos duas pastas "img_path_fechada" e "img_path_aberta" para criarmos o nosso conjunto de dados do projeto.
 ### 1.3 Pré-processamento dos dados:
 a) Redimensionamos as imagens para 224x224 pixels.
 
 b) Geramos novas imagens com o ImageDataGenerator para treinamento do nosso modelo.
+
 
 c) Utilizamos uma rede neural convolucional (CNN) e parametrizamos com o models.Sequential, especificando as camadas de convolução, pulling, flatten e dense.
 
@@ -36,6 +38,12 @@ a) Utilizamos o streamlit para a criação da interface (app_streamlit.py)
 b) a url que está rodando esta infterface do streamlit é http://localhost:8501/
 ## 4. requirements.txt
 Colocamos os requisitos necessários para rodar esta solução no requirements.txt
+
+### Para rodar o modelo:
+Abra o VS Code
+
+Execute o comando (streamlit run app_streamlit.py) 
+
 ## 5. Criamos arquivos para a conteinerização
 a) Dockerfile-api (para a API)
 
