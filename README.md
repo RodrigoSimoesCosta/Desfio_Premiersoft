@@ -101,7 +101,7 @@ Exemplos: aumente o tamanho da máquina EC2 na AWS ou redimensione a instância 
       - Configurar um cluster sharded para distribuir dados entre múltiplos servidores.
       - Habilitar backups automáticos e failover.
 
-  ## 10. Monitoramento e Métricas
+## 10. Monitoramento e Métricas
 ### 10.1 KPIs
 - Tempo de resposta: Tempo médio de resposta em milissegundos.
 - Taxa de erro: Percentual de requisições com falha (4xx e 5xx).
