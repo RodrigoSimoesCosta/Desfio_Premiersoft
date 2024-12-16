@@ -20,10 +20,10 @@ b) Geramos novas imagens com o ImageDataGenerator para treinamento do nosso mode
 c) Utilizamos uma rede neural convolucional (CNN) e parametrizamos com o models.Sequential, especificando as camadas de convolução, pulling, flatten e dense.
 d) Devido as limitações de recurso computacional e tempo, usamos 10 épocas para treinamento, tendo uma acurácia de 99,48% na classificação das imagens das garrafas como "aberta" ou "fechada".
 e) Salvamos o modelo "garrafa_model.keras".
-## Criação da API Flask (app.py)
+## 2. Criação da API Flask (app.py)
 a) Utilizamos o flask para a criação da API (app.py).
 b) Implementamos tratamento de erros para entradas inválidas. 
-## Criação de uma interface para interagir com a API e realizar testes (app_streamlit.py)
+## 3. Criação de uma interface para interagir com a API e realizar testes (app_streamlit.py)
 a) Utilizamos o streamlit para a criação da interface (app_streamlit.py)
 b) a url que está rodando esta infterface do streamlit é http://localhost:8501/
 
