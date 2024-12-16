@@ -13,5 +13,18 @@ Linguagem: Criamos um modelo em python que segue as seguintes etapas:
 ### 1.1 Instalação de Pacotes e Importação das Bibliotecas:
 instalamos os pacotes e as bilbiotecas necessárias
 ### 1.2 Dados:
-Pegamos o conjunto de dados proposto que tinha 8589 imagens e selecionamos de maneira aleatória 500 imagens de garrafas abertas e 500 imagens de garrafas fechadas para criarmos o nosso conjunto de dados do projeto.
+Pegamos o conjunto de dados proposto que tinha 8589 imagens e selecionamos de maneira aleatória 500 imagens de garrafas abertas e 500 imagens de garrafas fechadas e criamos duas pastas "img_path_fechada" e "img_path_aberta" para criarmos o nosso conjunto de dados do projeto.
+### 1.3 Pré-processamento dos dados:
+a) Redimensionamos as imagens para 224x224 pixels.
+b) Geramos novas imagens com o ImageDataGenerator para treinamento do nosso modelo.
+c) Utilizamos uma rede neural convolucional (CNN) e parametrizamos com o models.Sequential, especificando as camadas de convolução, pulling, flatten e dense.
+d) Devido as limitações de recurso computacional e tempo, usamos 10 épocas para treinamento, tendo uma acurácia de 99,48% na classificação das imagens das garrafas como "aberta" ou "fechada".
+e) Salvamos o modelo "garrafa_model.keras".
+## Criação da API Flask (app.py)
+a) Utilizamos o flask para a criação da API (app.py).
+b) Implementamos tratamento de erros para entradas inválidas. 
+## Criação de uma interface para interagir com a API e realizar testes (app_streamlit.py)
+a) Utilizamos o streamlit para a criação da interface (app_streamlit.py)
+b) a url que está rodando esta infterface do streamlit é http://localhost:8501/
+
 
