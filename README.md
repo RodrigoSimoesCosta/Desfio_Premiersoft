@@ -11,7 +11,7 @@ Data: 16/12/2024
 Nome do arquivo: desafio_premier_soft.py
 Linguagem: Criamos um modelo em python que segue as seguintes etapas:
 ### 1.1 Instalação de Pacotes e Importação das Bibliotecas:
-instalamos os pacotes e as bilbiotecas necessárias
+Instalamos os pacotes e as bilbiotecas necessárias
 ### 1.2 Dados:
 Pegamos o conjunto de dados proposto que tinha 8589 imagens e selecionamos de maneira aleatória 500 imagens de garrafas abertas e 500 imagens de garrafas fechadas e criamos duas pastas "img_path_fechada" e "img_path_aberta" para criarmos o nosso conjunto de dados do projeto.
 ### 1.3 Pré-processamento dos dados:
@@ -26,5 +26,30 @@ b) Implementamos tratamento de erros para entradas inválidas.
 ## 3. Criação de uma interface para interagir com a API e realizar testes (app_streamlit.py)
 a) Utilizamos o streamlit para a criação da interface (app_streamlit.py)
 b) a url que está rodando esta infterface do streamlit é http://localhost:8501/
-
-
+## 4. requirements.txt
+Colocamos os requisitos necessários para rodar esta solução no requirements.txt
+## 5. Criamos arquivos para a conteinerização
+a) Dockerfile-api (para a API)
+b) Dockerfile-model (para o modelo)
+c) Dockerfile-frontend (para o streamlit)
+d) docker-compose.yml
+## 6. Sugestão de possíveis casos de uso para esta solução
+Esta ferramenta pode ser aproveitada em uma linha de produção de engarramento de bebidas.
+Ao final do processo, teríamos o algoritmo atuando no controle da qualidade e identificando se as garrafas, após o recebimento do líquido, elas foram fechadas ou não.
+## 7. Proposta de Infraestrutura Escalável no GCP
+### 7.1. Frontend (Streamlit)
+Implantar o Streamlit App no Cloud Run, garantindo escalabilidade e alta disponibilidade para a interface.
+### 7.2. Backend (API Flask)
+Implantar a API Flask no Cloud Run, conectada ao modelo de inferência.
+O modelo pode ser otimizado para inferência rápida (TensorFlow Lite ou ONNX).
+### 7.3. Banco de Dados
+Utilizar Cloud Storage para armazenar imagens e Firestore para logs e metadados das inferências.
+### 7.4. Balanceamento e Segurança
+Configurar um Cloud Load Balancer para distribuir tráfego entre instâncias da API.
+Usar API Gateway para gerenciar autenticação e acessos.
+### 7.5. Monitoramento e Resiliência
+Utilizar Cloud Monitoring para métricas (latência, erros) e alertas automáticos.
+Configurar backups automáticos no Firestore e escalabilidade automática com o Cloud Run.
+### 7.6. Escalabilidade
+Cloud Run ajusta instâncias automaticamente conforme a demanda.
+Projetar para tolerância a falhas com redundância geográfica.
